@@ -5,68 +5,66 @@ import java.util.ArrayList;
 /**
  * Created by Bärbel on 07.05.2017.
  */
-public class Solution{//} implements Comparable{
+public class Solution{
 
-    private ArrayList<int[]> solutionMatrix; // int[] speichert die ansicht einer Seite
+    private ArrayList<int[]> solutionMatrix; // int[] speichert die Ansicht von einer Seite
 
     public Solution (Tower tower){
 
         solutionMatrix = new ArrayList<>();
 
-        int[] side = new int[4];
+        int[] side1 = new int[4];
+        int[] side2 = new int[4];
+        int[] side3 = new int[4];
+        int[] side4 = new int[4];
 
-        for( int i = 0; i < 4; i++ ){
-            for( int j = 0; j < 4; j++ ){
-                side[i] = tower.getCubes().get(j).getActualSideToRotate().get(i);
-            }
-            solutionMatrix.add(side);
+        for( int j = 0; j < 4; j++ ){
+            side1[j] = tower.getCubes().get(j).getActualSideToRotate().get(0);
+            side2[j] = tower.getCubes().get(j).getActualSideToRotate().get(1);
+            side3[j] = tower.getCubes().get(j).getActualSideToRotate().get(2);
+            side4[j] = tower.getCubes().get(j).getActualSideToRotate().get(3);
         }
 
+        solutionMatrix.add(side1);
+        solutionMatrix.add(side2);
+        solutionMatrix.add(side3);
+        solutionMatrix.add(side4);
+
     }
 
-    /*
-    //private ArrayList<int[]> solutionMatrix = new ArrayList<>();// = new int[4][4];
-    private ArrayList<ArrayList<Integer>> solutionMatrix = new ArrayList<>();
 
-    public Solution(Tower tower){
-
-        Cube cube;
-        ArrayList<Integer> sides;
-        int side;
-
-        for(int j = 0; j < 4; j++){
-
-            cube = tower.getCubes().get(j);
-            sides = cube.getSidesToRotate().get(cube.getAxisIndex());
-
-            for(int i = 0; 0 < 4; i++){
-                side = sides.get(i);
-                solutionMatrix.get(i).add(side);
-            }
-        }
-    }
-
-    public ArrayList<ArrayList<Integer>> getSolutionMatrix() {
-        return solutionMatrix;
-    }
-
-    /*
     public ArrayList<int[]> getSolutionMatrix() {
-        return solutionMatrix;
-    }
-    */
+        return solutionMatrix;}
 
-    /*
-    private boolean isNewSolution(Solution solutionToCompare){
-        for(int i = 0; i < 4; i++){
-            solutionToCompare.rotate();
-            if(solutionToCompare.compareTo(this) == 0){
+    public boolean isNewSolution(Solution solutionToCompare){
+
+        int rotationCounter = 0;
+
+        while(rotationCounter < 4){
+            if(!sidesDifferent(solutionToCompare)){
                 return false;
+            }else{
+                rotationCounter++;
+                solutionToCompare.rotate();
             }
         }
+
         return true;
     }
-    */
+
+    public boolean sidesDifferent(Solution solutionToCompare){
+
+        for(int i = 0; i < 4; i++){
+            for(int j = 0; j < 4; j++){
+                if(solutionToCompare.getSolutionMatrix().get(i)[j] != solutionMatrix.get(i)[j]){
+                    return true;
+                }
+            }
+        }
+
+        return false;
+    }
+
 
     /*
     public boolean isNewSolution(ArrayList<Solution> solutionsToCompare){
@@ -79,26 +77,24 @@ public class Solution{//} implements Comparable{
     }
     */
 
-    /*
-    private void rotate(){
+
+    public void rotate(){
         solutionMatrix.add(solutionMatrix.get(0));
         solutionMatrix.remove(0);
     }
 
-    @Override
-    public int compareTo(Object toCompare){
+    public String toString(){
 
-        Solution solutionToCompare = (Solution) toCompare;
+        StringBuilder sb = new StringBuilder();
 
-        for(int i = 0; i < 4; i++){
-            if(!solutionToCompare.getSolutionMatrix().get(i).equals(solutionMatrix.get(i))){
-                return -1;
+        for (int i = 0; i < 4; i++){
+            for(int j = 0; j < 4; j++){
+                sb.append(solutionMatrix.get(j)[i] + ", ");
             }
+            sb.append("\n");
         }
 
-        return 0;
-
+        return sb.toString();
     }
-    */
 
 }
