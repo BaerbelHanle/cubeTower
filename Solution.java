@@ -65,8 +65,6 @@ public class Solution{
         return false;
     }
 
-
-    /*
     public boolean isNewSolution(ArrayList<Solution> solutionsToCompare){
         for(Solution solutionToCompare : solutionsToCompare){
             if(!isNewSolution(solutionToCompare)){
@@ -75,7 +73,6 @@ public class Solution{
         }
         return true;
     }
-    */
 
 
     public void rotate(){
