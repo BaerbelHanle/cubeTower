@@ -7,7 +7,9 @@ import java.util.ArrayList;
  */
 public class Solution{
 
+
     private ArrayList<int[]> solutionMatrix; // int[] speichert die Ansicht von einer Seite
+
 
     public Solution (Tower tower){
 
@@ -36,6 +38,7 @@ public class Solution{
     public ArrayList<int[]> getSolutionMatrix() {
         return solutionMatrix;}
 
+
     public boolean isNewSolution(Solution solutionToCompare){
 
         int rotationCounter = 0;
@@ -52,7 +55,8 @@ public class Solution{
         return true;
     }
 
-    public boolean sidesDifferent(Solution solutionToCompare){
+
+    private boolean sidesDifferent(Solution solutionToCompare){
 
         for(int i = 0; i < 4; i++){
             for(int j = 0; j < 4; j++){
@@ -65,6 +69,7 @@ public class Solution{
         return false;
     }
 
+
     public boolean isNewSolution(ArrayList<Solution> solutionsToCompare){
         for(Solution solutionToCompare : solutionsToCompare){
             if(!isNewSolution(solutionToCompare)){
@@ -75,10 +80,12 @@ public class Solution{
     }
 
 
-    public void rotate(){
+
+    private void rotate(){
         solutionMatrix.add(solutionMatrix.get(0));
         solutionMatrix.remove(0);
     }
+
 
     public String toString(){
 
