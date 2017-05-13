@@ -55,7 +55,6 @@ public class Solution{
         return true;
     }
 
-
     private boolean sidesDifferent(Solution solutionToCompare){
 
         for(int i = 0; i < 4; i++){

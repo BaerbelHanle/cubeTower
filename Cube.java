@@ -7,6 +7,7 @@ import java.util.ArrayList;
  */
 public class Cube {
 
+    //TODO: check how the colors are interpreted to ints by creation of a cube
     /**
      * Die inneren ArrayLists speichern alle möglichen Mantelflaechen.
      * Der Wuerfel hat 3 Achsen um die gedreht wird mit je 2 Orientierungen.
@@ -114,6 +115,9 @@ public class Cube {
 
         if(sidePosition == 3){
             axisIndex++;
+            if (axisIndex==6){
+                axisIndex=0;
+            }
             sidePosition = 0;
         }else{
             rotate(sidesToRotate.get(axisIndex));
@@ -141,13 +145,14 @@ public class Cube {
      */
     public boolean sidesDifferent(Cube cubeToCompare){
 
-        for(int i = 0; i < 3; i++){
-            if(cubeToCompare.getSidesToRotate().get(getAxisIndex()).get(i) == sidesToRotate.get(axisIndex).get(i)){
-                return false;
+            for (int i = 0; i < 3; i++) {
+                if (cubeToCompare.getSidesToRotate().get(cubeToCompare.getAxisIndex()).get(i) == sidesToRotate.get(axisIndex).get(i)) {
+                    return false;
+                }
             }
-        }
 
-        return true;
+            return true;
+
     }
 
     /**
@@ -159,7 +164,7 @@ public class Cube {
     public boolean sidesDifferent(ArrayList<Cube> cubesToCompare){
 
         for(Cube cube : cubesToCompare){
-            if(!sidesDifferent(cube)){
+            if(!this.equals(cube) && !sidesDifferent(cube)){
                 return false;
             }
         }
