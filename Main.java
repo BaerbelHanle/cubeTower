@@ -34,15 +34,19 @@ public class Main {
 
         Cube cube5 = new Cube (1, 2, 3, 0, 2, 1);
         Cube cube6 = new Cube (1, 1, 0, 3, 0, 1);
-        Cube cube7 = new Cube (1, 3, 1, 1, 1, 1);
+        Cube cube7 = new Cube (1, 1, 1, 1, 1, 1);
         Cube cube8 = new Cube(1, 0, 2, 2, 3, 1);
         ArrayList<Cube> cubes2 = new ArrayList<>();
-        cubes2.add(cube5);
         cubes2.add(cube6);
         cubes2.add(cube7);
+        cubes2.add(cube5);
         cubes2.add(cube8);
         Tower tower2 = new Tower(cubes2);
         System.out.println(cube5.sidesDifferent(cubes2));
+        System.out.println(cube6.sidesDifferent(cubes2));
+        System.out.println(cube7.sidesDifferent(cubes2));
+        System.out.println(cube8.sidesDifferent(cubes2));
+
         System.out.println(tower2.isValidTower());
 
         //TODO: check what to do is cube is equal to itself

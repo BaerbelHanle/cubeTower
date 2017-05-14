@@ -66,23 +66,16 @@ public class Tower {
 
     //TODO: change to private
     public boolean isValidTower(){
-        for (int i = 0; i<3; i++){
-            for (int j=0; j<3; j++){
-                if (!cubes.get(i).sidesDifferent(cubes.get(j))){
-                    return false;
-                }
+        for (Cube cube: cubes){
+            if (!cube.sidesDifferent(cubes)){
+                return false;
             }
         }
-        /*
-        Cube currentCube;
-        for (int i =0; i<3; i++){
-            currentCube=cubes.get(i);
-            currentCube.sidesDifferent(cubes);
+        System.out.println("---------------------------------");
+        for (Cube cube: cubes){
+            System.out.println(cube.toString());
         }
-        */
-
         return true;
-
     }
 
     private boolean furtherRotationsMakeSense(int indexOfCube){

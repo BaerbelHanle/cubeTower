@@ -113,12 +113,13 @@ public class Cube {
      */
     public void rotate(){
 
-        if(sidePosition == 3){
+        if(sidePosition == 4){
+            sidePosition = 0;
             axisIndex++;
             if (axisIndex==6){
                 axisIndex=0;
             }
-            sidePosition = 0;
+
         }else{
             rotate(sidesToRotate.get(axisIndex));
             sidePosition++;
@@ -145,14 +146,22 @@ public class Cube {
      */
     public boolean sidesDifferent(Cube cubeToCompare){
 
-            for (int i = 0; i < 3; i++) {
-                if (cubeToCompare.getSidesToRotate().get(cubeToCompare.getAxisIndex()).get(i) == sidesToRotate.get(axisIndex).get(i)) {
-                    return false;
-                }
-            }
-
+        if (this.equals(cubeToCompare)){
             return true;
-
+        }
+        for (int i = 0; i <= 3; i++) {
+            int sideOne = cubeToCompare.getActualSideToRotate().get(i);
+            int sideTwo = getActualSideToRotate().get(i);
+            if (sideOne == sideTwo) {
+                return false;
+            }
+        }
+        /*
+        System.out.println("====== NoT DIFFERENT: =============");
+        System.out.println(toString());
+        System.out.println(cubeToCompare.toString());
+        */
+        return true;
     }
 
     /**
@@ -164,7 +173,7 @@ public class Cube {
     public boolean sidesDifferent(ArrayList<Cube> cubesToCompare){
 
         for(Cube cube : cubesToCompare){
-            if(!this.equals(cube) && !sidesDifferent(cube)){
+            if(!sidesDifferent(cube)){
                 return false;
             }
         }
