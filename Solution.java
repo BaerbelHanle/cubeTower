@@ -9,6 +9,7 @@ public class Solution{
 
 
     private ArrayList<int[]> solutionMatrix; // int[] speichert die Ansicht von einer Seite
+    public static String[] colours = {"rot", "blau", "gruen", "gelb"};
 
 
     public Solution (Tower tower){
@@ -92,7 +93,7 @@ public class Solution{
 
         for (int i = 0; i < 4; i++){
             for(int j = 0; j < 4; j++){
-                sb.append(solutionMatrix.get(j)[i] + ", ");
+                sb.append(colours[solutionMatrix.get(j)[i]] + "     \t");
             }
             sb.append("\n");
         }

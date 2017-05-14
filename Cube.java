@@ -2,6 +2,8 @@ package cubeTower;
 
 import java.util.ArrayList;
 
+import static java.lang.System.exit;
+
 /**
  * Created by Bärbel on 07.05.2017.
  */
@@ -31,6 +33,53 @@ public class Cube {
      * Wird fuer toString benoetigt
      */
     public static String[] colours = {"rot", "blau", "gruen", "gelb"};
+
+    public Cube(String side1, String side2, String side3, String side4, String side5, String side6){
+        sidesToRotate = new ArrayList<ArrayList<Integer>>();
+        axisIndex = 0;
+        sidePosition = 0;
+
+        int _side1= colorToInt(side1);
+        int _side2= colorToInt(side2);
+        int _side3= colorToInt(side3);
+        int _side4= colorToInt(side4);
+        int _side5= colorToInt(side5);
+        int _side6= colorToInt(side6);
+
+        setSides(_side2, _side3, _side4, _side5);
+        setSides(_side2, _side5, _side4, _side3);
+        setSides(_side1, _side3, _side6, _side5);
+        setSides(_side1, _side5, _side6, _side3);
+        setSides(_side1, _side4, _side6, _side2);
+        setSides(_side1, _side2, _side6, _side4);
+
+
+        /* //Baerbel
+        setSides(_side2, _side3, _side5, _side4);
+        setSides(_side1, _side4, _side6, _side3);
+        setSides(_side1, _side2, _side6, _side5);
+        setSides(_side1, _side5, _side6, _side2);
+        setSides(_side1, _side3, _side6, _side4);
+        setSides(_side2, _side4, _side5, _side3);
+        */
+
+    }
+
+    private Integer colorToInt(String side){
+        if(side.toLowerCase().equals("rot")){
+            return 0;
+        } else if(side.toLowerCase().equals("blau")){
+            return 1;
+        } else if(side.toLowerCase().equals("gruen") || side.toLowerCase().equals("grün")){
+            return 2;
+        } else if(side.toLowerCase().equals("gelb")){
+            return 3;
+        } else {
+            System.out.println("Die Farben passen leider nicht.");
+            exit(0);
+            return -1;
+        }
+    }
 
     /**
      * Der Konstruktor von Cube erstellt die Mantelflaechen eines Wuerfels mit den uebergebenen Farben.
