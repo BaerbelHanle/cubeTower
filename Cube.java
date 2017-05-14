@@ -53,18 +53,13 @@ public class Cube {
         setSides(_side1, _side4, _side6, _side2);
         setSides(_side1, _side2, _side6, _side4);
 
-
-        /* //Baerbel
-        setSides(_side2, _side3, _side5, _side4);
-        setSides(_side1, _side4, _side6, _side3);
-        setSides(_side1, _side2, _side6, _side5);
-        setSides(_side1, _side5, _side6, _side2);
-        setSides(_side1, _side3, _side6, _side4);
-        setSides(_side2, _side4, _side5, _side3);
-        */
-
     }
 
+    /**
+     * Konvertiert die Farbe des Wuerfels in Integer-Werte.
+     * @param side Seite des Wuerfels
+     * @return 0 fuer rot, 1 fuer blau, 2 fuer gruen, 3 fuer gelb
+     */
     private Integer colorToInt(String side){
         if(side.toLowerCase().equals("rot")){
             return 0;
@@ -111,10 +106,10 @@ public class Cube {
      * Hilfsfunktion fuer den Konstruktor
      * fuegt die Farben einer Mantelflaeche in dei entsprechende ArrayList ein
      *
-     * @param colour1
-     * @param colour2
-     * @param colour3
-     * @param colour4
+     * @param colour1 Farbe 1
+     * @param colour2 Farbe 2
+     * @param colour3 Farbe 3
+     * @param colour4 Farbe 4
      */
     private void setSides(int colour1, int colour2, int colour3, int colour4){
 
