@@ -25,7 +25,7 @@ public class Tower {
     }
 
     //TODO: check logic
-    private void addSolutionIfPossible() {
+    private void addSolutionIfUnique() {
         Solution possibleSolution = new Solution(this);
         if (solutions.isEmpty()){
             solutions.add(possibleSolution);
@@ -51,7 +51,7 @@ public class Tower {
     private void rotateRecursive(int indexOfCube) {
         if (indexOfCube >= 4) {
             if (isValidTower()){
-                addSolutionIfPossible();
+                addSolutionIfUnique();
             }
 
         } else {
@@ -64,16 +64,11 @@ public class Tower {
         }
     }
 
-    //TODO: change to private
-    public boolean isValidTower(){
+    private boolean isValidTower(){
         for (Cube cube: cubes){
             if (!cube.sidesDifferent(cubes)){
                 return false;
             }
-        }
-        System.out.println("---------------------------------");
-        for (Cube cube: cubes){
-            System.out.println(cube.toString());
         }
         return true;
     }
@@ -107,6 +102,7 @@ public class Tower {
         if (!solutions.isEmpty()) {
             int i=1;
             for (Solution solution : solutions) {
+                System.out.println("=================SOLUTION=================");
                 System.out.println(i++);
                 System.out.println(solution.toString());
             }

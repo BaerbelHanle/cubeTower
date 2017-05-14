@@ -205,11 +205,6 @@ public class Cube {
                 return false;
             }
         }
-        /*
-        System.out.println("====== NoT DIFFERENT: =============");
-        System.out.println(toString());
-        System.out.println(cubeToCompare.toString());
-        */
         return true;
     }
 
