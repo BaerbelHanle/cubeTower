@@ -71,6 +71,7 @@ public class Solution{
 
 
     public boolean isNewSolution(ArrayList<Solution> solutionsToCompare){
+
         for(Solution solutionToCompare : solutionsToCompare){
             if(!isNewSolution(solutionToCompare)){
                 return false;

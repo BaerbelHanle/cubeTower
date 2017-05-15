@@ -157,7 +157,7 @@ public class Cube {
      */
     public void rotate(){
 
-        if(sidePosition == 4){
+        if(sidePosition == 3){
             sidePosition = 0;
             axisIndex++;
             if (axisIndex==6){

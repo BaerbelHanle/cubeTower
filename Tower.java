@@ -30,11 +30,11 @@ public class Tower {
     private void addSolutionIfUnique() {
         Solution possibleSolution = new Solution(this);
         if (solutions.isEmpty()){
-            solutions.add(possibleSolution);
+          solutions.add(possibleSolution);
         } else {
-            if (possibleSolution.isNewSolution(solutions)){
+           if (possibleSolution.isNewSolution(solutions)){
                 solutions.add(possibleSolution);
-            }
+           }
         }
     }
 
