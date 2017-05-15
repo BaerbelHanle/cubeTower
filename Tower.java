@@ -67,7 +67,7 @@ public class Tower {
             }
 
         } else {
-            for (int i = 0; i < 29; i++) {
+            for (int i = 0; i < 24; i++) {
                 cubes.get(indexOfCube).rotate();
                 if (furtherRotationsMakeSense(indexOfCube)){
                     rotateRecursive(indexOfCube+1);
