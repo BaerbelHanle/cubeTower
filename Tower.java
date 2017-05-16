@@ -17,6 +17,7 @@ public class Tower {
 
     /**
      * Konstruktor fuer den Turm.
+     *
      * @param cubes ArrayList von den Wuerfel, die zu dem Turm gehören.
      */
     public Tower(ArrayList<Cube> cubes) {
@@ -27,6 +28,7 @@ public class Tower {
 
     /**
      * Getter fuer die Wuerfel
+     *
      * @return ArrayList von Wuerfeln
      */
     public ArrayList<Cube> getCubes() {
@@ -45,19 +47,20 @@ public class Tower {
      * Nach der Rotation des naechsten Wuerfels prueft man, ob es ueberhaupt noetig ist,
      * weitere Wuerfel des Turms zu rotieren (ob schon die ersten Wuerfels passen).
      * Wenn 4. (letzter) Wuerfel rotiert ist, ueberprueft man, ob die folgende Turmstellung eine gueltige Loesung ist.
+     *
      * @param indexOfCube Nummer des Wuerfels im Turm
      */
     private void rotateRecursive(int indexOfCube) {
         if (indexOfCube >= 4) {
-            if (isValidTower()){
+            if (isValidTower()) {
                 addSolutionIfUnique();
             }
 
         } else {
             for (int i = 0; i < 24; i++) {
                 cubes.get(indexOfCube).rotate();
-                if (furtherRotationsMakeSense(indexOfCube)){
-                    rotateRecursive(indexOfCube+1);
+                if (furtherRotationsMakeSense(indexOfCube)) {
+                    rotateRecursive(indexOfCube + 1);
                 }
             }
         }
@@ -65,27 +68,28 @@ public class Tower {
 
     /**
      * Ueberprueft, ob die Wuerfel, die schon rotiert werden, fuer die Loesung passen
+     *
      * @param indexOfCube nummer des Wuerfels im Turm
      * @return true, falls gueltige Loesung
      */
-    private boolean furtherRotationsMakeSense(int indexOfCube){
+    private boolean furtherRotationsMakeSense(int indexOfCube) {
         Cube currentCube = cubes.get(indexOfCube);
-        if (indexOfCube == 0){
+        if (indexOfCube == 0) {
             return true;
-        } else if(indexOfCube==1){
-            if (currentCube.sidesDifferent(cubes.get(0))){
+        } else if (indexOfCube == 1) {
+            if (currentCube.sidesDifferent(cubes.get(0))) {
                 return true;
             } else {
                 return false;
             }
         } else {
             ArrayList<Cube> cubesToCompare = new ArrayList<>();
-            for (int i = 0; i<indexOfCube; i++){
+            for (int i = 0; i < indexOfCube; i++) {
                 cubesToCompare.add(cubes.get(i));
             }
-            for (int i =0; i<indexOfCube; i++){
-                currentCube=cubesToCompare.get(i);
-                if (!currentCube.sidesDifferent(cubesToCompare)){
+            for (int i = 0; i < indexOfCube; i++) {
+                currentCube = cubesToCompare.get(i);
+                if (!currentCube.sidesDifferent(cubesToCompare)) {
                     return false;
                 }
             }
@@ -95,11 +99,12 @@ public class Tower {
 
     /**
      * Ueberprueft, ob alle Wuerfel an den Seiten verschiedene Farben haben.
+     *
      * @return true, falls es eine gueltige Loesung ist
      */
-    private boolean isValidTower(){
-        for (Cube cube: cubes){
-            if (!cube.sidesDifferent(cubes)){
+    private boolean isValidTower() {
+        for (Cube cube : cubes) {
+            if (!cube.sidesDifferent(cubes)) {
                 return false;
             }
         }
@@ -111,10 +116,10 @@ public class Tower {
      */
     private void addSolutionIfUnique() {
         Solution possibleSolution = new Solution(this);
-        if (solutions.isEmpty()){
+        if (solutions.isEmpty()) {
             solutions.add(possibleSolution);
         } else {
-            if (possibleSolution.isNewSolution(solutions)){
+            if (possibleSolution.isNewSolution(solutions)) {
                 solutions.add(possibleSolution);
             }
         }
@@ -123,12 +128,12 @@ public class Tower {
     /**
      * Druckt alle Loesungen aus.
      */
-    public void printSolutions(){
+    public void printSolutions() {
         if (!solutions.isEmpty()) {
-            int solutionCounter=1;
+            int solutionCounter = 1;
             for (Solution solution : solutions) {
                 System.out.println("=================SOLUTION=================");
-                System.out.println("                    "+ solutionCounter);
+                System.out.println("                  - " + solutionCounter + " -");
                 solutionCounter++;
                 System.out.println(solution.toString());
             }

@@ -8,22 +8,24 @@ import java.util.ArrayList;
 public class Main {
 
     public static void main(String[] args) {
-
         test1();
+        test2();
     }
 
-    public static void test1(){
+    public static void test1() {
+        System.out.println("==========================================");
+        System.out.println("                  TEST 1");
         Cube cube1 = new Cube("blau",
                 "rot", "grün", "grün", "gelb",
                 "gelb");
         Cube cube2 = new Cube("rot",
-                "grün", "gelb", "rot","blau",
-                "rot" );
+                "grün", "gelb", "rot", "blau",
+                "rot");
         Cube cube3 = new Cube("blau",
                 "gelb", "rot", "blau", "grün",
                 "gelb");
         Cube cube4 = new Cube("rot",
-                "blau","blau", "gelb","rot",
+                "blau", "blau", "gelb", "rot",
                 "grün");
         ArrayList cubes = new ArrayList<>();
         cubes.add(cube1);
@@ -35,18 +37,20 @@ public class Main {
         tower.printSolutions();
     }
 
-    public static void test2(){
+    public static void test2() {
+        System.out.println("==========================================");
+        System.out.println("                  TEST 2");
         Cube cube1 = new Cube("gelb",
                 "grün", "grün", "blau", "rot",
                 "gelb");
         Cube cube2 = new Cube("blau",
-                "rot", "rot", "rot","gelb",
-                "grün" );
+                "rot", "rot", "rot", "gelb",
+                "grün");
         Cube cube3 = new Cube("gelb",
                 "rot", "blau", "gelb", "grün",
                 "blau");
         Cube cube4 = new Cube("blau",
-                "rot","rot", "blau","grün",
+                "rot", "rot", "blau", "grün",
                 "gelb");
         ArrayList cubes = new ArrayList<>();
         cubes.add(cube1);
@@ -58,7 +62,7 @@ public class Main {
         tower.printSolutions();
     }
 
-    public static void testsWithNumbers(){
+    public static void testsWithNumbers() {
         /*
         // "rot", "blau", "gruen", "gelb"
         //   0      1        2       3

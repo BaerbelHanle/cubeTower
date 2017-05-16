@@ -45,17 +45,17 @@ public class Cube {
      * @param side5 Farbe (als int repraesentiert) linke Seite des Wuerfels (links)
      * @param side6 Farbe (als int repraesentiert) untere Seite des Wuerfels (down)
      */
-    public Cube(String side1, String side2, String side3, String side4, String side5, String side6){
+    public Cube(String side1, String side2, String side3, String side4, String side5, String side6) {
         sidesToRotate = new ArrayList<ArrayList<Integer>>();
         axisIndex = 0;
         sidePosition = 0;
 
-        int _side1= colorToInt(side1);
-        int _side2= colorToInt(side2);
-        int _side3= colorToInt(side3);
-        int _side4= colorToInt(side4);
-        int _side5= colorToInt(side5);
-        int _side6= colorToInt(side6);
+        int _side1 = colorToInt(side1);
+        int _side2 = colorToInt(side2);
+        int _side3 = colorToInt(side3);
+        int _side4 = colorToInt(side4);
+        int _side5 = colorToInt(side5);
+        int _side6 = colorToInt(side6);
 
         setSides(_side2, _side3, _side4, _side5);
         setSides(_side2, _side5, _side4, _side3);
@@ -68,17 +68,18 @@ public class Cube {
 
     /**
      * Konvertiert die Farbe des Wuerfels in Integer-Werte.
+     *
      * @param side Seite des Wuerfels
      * @return 0 fuer rot, 1 fuer blau, 2 fuer gruen, 3 fuer gelb
      */
-    private Integer colorToInt(String side){
-        if(side.toLowerCase().equals("rot")){
+    private Integer colorToInt(String side) {
+        if (side.toLowerCase().equals("rot")) {
             return 0;
-        } else if(side.toLowerCase().equals("blau")){
+        } else if (side.toLowerCase().equals("blau")) {
             return 1;
-        } else if(side.toLowerCase().equals("gruen") || side.toLowerCase().equals("grün")){
+        } else if (side.toLowerCase().equals("gruen") || side.toLowerCase().equals("grün")) {
             return 2;
-        } else if(side.toLowerCase().equals("gelb")){
+        } else if (side.toLowerCase().equals("gelb")) {
             return 3;
         } else {
             System.out.println("Die Farben passen leider nicht.");
@@ -96,7 +97,7 @@ public class Cube {
      * @param colour3 Farbe 3
      * @param colour4 Farbe 4
      */
-    private void setSides(int colour1, int colour2, int colour3, int colour4){
+    private void setSides(int colour1, int colour2, int colour3, int colour4) {
 
         ArrayList<Integer> list = new ArrayList<Integer>();
 
@@ -123,7 +124,7 @@ public class Cube {
      *
      * @return
      */
-    public int getAxisIndex(){
+    public int getAxisIndex() {
         return axisIndex;
     }
 
@@ -131,16 +132,16 @@ public class Cube {
      * Abhaengig von axisIndex und sidePosition sorgt rotate() dafuer, dass der Wuerfel in eine Position gedreht wird, in der er noch nicht war.
      * Ueber 24-faches Aufrufen von rotate() laesst sich sicherstellen, dass ein Wuerfel alle moegliche Stellungen einnimmt.
      */
-    public void rotate(){
+    public void rotate() {
 
-        if(sidePosition == 3){
+        if (sidePosition == 3) {
             sidePosition = 0;
             axisIndex++;
-            if (axisIndex==6){
-                axisIndex=0;
+            if (axisIndex == 6) {
+                axisIndex = 0;
             }
 
-        }else{
+        } else {
             rotate(sidesToRotate.get(axisIndex));
             sidePosition++;
         }
@@ -153,7 +154,7 @@ public class Cube {
      *
      * @param sides Mantelflaeche, die zu der Achse gehoert, um die gerade gedreht wird
      */
-    private void rotate(ArrayList<Integer> sides){
+    private void rotate(ArrayList<Integer> sides) {
         sides.add(sides.get(0));
         sides.remove(0);
     }
@@ -165,9 +166,9 @@ public class Cube {
      * @param cubeToCompare anderer Wuerfel, mit dem verglichen werden soll
      * @return true falls alle Seiten verschieden
      */
-    public boolean sidesDifferent(Cube cubeToCompare){
+    public boolean sidesDifferent(Cube cubeToCompare) {
 
-        if (this.equals(cubeToCompare)){
+        if (this.equals(cubeToCompare)) {
             return true;
         }
         for (int i = 0; i <= 3; i++) {
@@ -186,10 +187,10 @@ public class Cube {
      * @param cubesToCompare ArrayList der Wuerfel, die auf Kompatibilitaet geprueft werden sollen
      * @return true, falls alle Seiten eine andere Farbe haben
      */
-    public boolean sidesDifferent(ArrayList<Cube> cubesToCompare){
+    public boolean sidesDifferent(ArrayList<Cube> cubesToCompare) {
 
-        for(Cube cube : cubesToCompare){
-            if(!sidesDifferent(cube)){
+        for (Cube cube : cubesToCompare) {
+            if (!sidesDifferent(cube)) {
                 return false;
             }
         }
@@ -203,9 +204,9 @@ public class Cube {
      * @return aktuelle Mantelflaeche
      */
     @Override
-    public String toString(){
+    public String toString() {
 
-        return  colours[sidesToRotate.get(axisIndex).get(0)] + ", "
+        return colours[sidesToRotate.get(axisIndex).get(0)] + ", "
                 + colours[sidesToRotate.get(axisIndex).get(1)] + ", "
                 + colours[sidesToRotate.get(axisIndex).get(2)] + ", "
                 + colours[sidesToRotate.get(axisIndex).get(3)];

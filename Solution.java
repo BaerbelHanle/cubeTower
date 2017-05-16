@@ -5,14 +5,14 @@ import java.util.ArrayList;
 /**
  * Created by Bärbel on 07.05.2017.
  */
-public class Solution{
+public class Solution {
 
 
     private ArrayList<int[]> solutionMatrix; // int[] speichert die Ansicht von einer Seite
     public static String[] colours = {"rot", "blau", "gruen", "gelb"};
 
 
-    public Solution (Tower tower){
+    public Solution(Tower tower) {
 
         solutionMatrix = new ArrayList<>();
 
@@ -21,7 +21,7 @@ public class Solution{
         int[] side3 = new int[4];
         int[] side4 = new int[4];
 
-        for( int j = 0; j < 4; j++ ){
+        for (int j = 0; j < 4; j++) {
             side1[j] = tower.getCubes().get(j).getActualSideToRotate().get(0);
             side2[j] = tower.getCubes().get(j).getActualSideToRotate().get(1);
             side3[j] = tower.getCubes().get(j).getActualSideToRotate().get(2);
@@ -37,17 +37,18 @@ public class Solution{
 
 
     public ArrayList<int[]> getSolutionMatrix() {
-        return solutionMatrix;}
+        return solutionMatrix;
+    }
 
 
-    public boolean isNewSolution(Solution solutionToCompare){
+    public boolean isNewSolution(Solution solutionToCompare) {
 
         int rotationCounter = 0;
 
-        while(rotationCounter < 4){
-            if(!sidesDifferent(solutionToCompare)){
+        while (rotationCounter < 4) {
+            if (!sidesDifferent(solutionToCompare)) {
                 return false;
-            }else{
+            } else {
                 rotationCounter++;
                 solutionToCompare.rotate();
             }
@@ -56,11 +57,11 @@ public class Solution{
         return true;
     }
 
-    private boolean sidesDifferent(Solution solutionToCompare){
+    private boolean sidesDifferent(Solution solutionToCompare) {
 
-        for(int i = 0; i < 4; i++){
-            for(int j = 0; j < 4; j++){
-                if(solutionToCompare.getSolutionMatrix().get(i)[j] != solutionMatrix.get(i)[j]){
+        for (int i = 0; i < 4; i++) {
+            for (int j = 0; j < 4; j++) {
+                if (solutionToCompare.getSolutionMatrix().get(i)[j] != solutionMatrix.get(i)[j]) {
                     return true;
                 }
             }
@@ -70,10 +71,10 @@ public class Solution{
     }
 
 
-    public boolean isNewSolution(ArrayList<Solution> solutionsToCompare){
+    public boolean isNewSolution(ArrayList<Solution> solutionsToCompare) {
 
-        for(Solution solutionToCompare : solutionsToCompare){
-            if(!isNewSolution(solutionToCompare)){
+        for (Solution solutionToCompare : solutionsToCompare) {
+            if (!isNewSolution(solutionToCompare)) {
                 return false;
             }
         }
@@ -81,19 +82,18 @@ public class Solution{
     }
 
 
-
-    private void rotate(){
+    private void rotate() {
         solutionMatrix.add(solutionMatrix.get(0));
         solutionMatrix.remove(0);
     }
 
 
-    public String toString(){
+    public String toString() {
 
         StringBuilder sb = new StringBuilder();
 
-        for (int i = 0; i < 4; i++){
-            for(int j = 0; j < 4; j++){
+        for (int i = 0; i < 4; i++) {
+            for (int j = 0; j < 4; j++) {
                 sb.append(colours[solutionMatrix.get(j)[i]] + "     \t");
             }
             sb.append("\n");
