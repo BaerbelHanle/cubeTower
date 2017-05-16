@@ -34,6 +34,17 @@ public class Cube {
      */
     public static String[] colours = {"rot", "blau", "gruen", "gelb"};
 
+    /**
+     * Der Konstruktor von Cube erstellt die Mantelflaechen eines Wuerfels mit den uebergebenen Farben.
+     * außerden initialisert er axisIndex und sidePosition mit 0.
+     *
+     * @param side1 Farbe (als int repraesentiert) obere (up) Seite des Wuerfels
+     * @param side2 Farbe (als int repraesentiert) auf Zuschauer zugewendte Seite des Wuerfels (front)
+     * @param side3 Farbe (als int repraesentiert) rechte Seite des Wuerfels (right)
+     * @param side4 Farbe (als int repraesentiert) hintere Seite des Wuerfels (back)
+     * @param side5 Farbe (als int repraesentiert) linke Seite des Wuerfels (links)
+     * @param side6 Farbe (als int repraesentiert) untere Seite des Wuerfels (down)
+     */
     public Cube(String side1, String side2, String side3, String side4, String side5, String side6){
         sidesToRotate = new ArrayList<ArrayList<Integer>>();
         axisIndex = 0;
@@ -77,32 +88,6 @@ public class Cube {
     }
 
     /**
-     * Der Konstruktor von Cube erstellt die Mantelflaechen eines Wuerfels mit den uebergebenen Farben.
-     * außerden initialisert er axisIndex und sidePosition mit 0.
-     *
-     * @param side1 Farbe (als int repraesentiert) auf der Seite des Wuerfels, die bei einem Standard-Spielwuerfel die 1 enthaelt
-     * @param side2 Farbe (als int repraesentiert) auf der Seite des Wuerfels, die bei einem Standard-Spielwuerfel die 2 enthaelt
-     * @param side3 Farbe (als int repraesentiert) auf der Seite des Wuerfels, die bei einem Standard-Spielwuerfel die 3 enthaelt
-     * @param side4 Farbe (als int repraesentiert) auf der Seite des Wuerfels, die bei einem Standard-Spielwuerfel die 4 enthaelt
-     * @param side5 Farbe (als int repraesentiert) auf der Seite des Wuerfels, die bei einem Standard-Spielwuerfel die 5 enthaelt
-     * @param side6 Farbe (als int repraesentiert) auf der Seite des Wuerfels, die bei einem Standard-Spielwuerfel die 6 enthaelt
-     */
-    public Cube(int side1, int side2, int side3, int side4, int side5, int side6){
-
-        sidesToRotate = new ArrayList<ArrayList<Integer>>();
-        axisIndex = 0;
-        sidePosition = 0;
-
-        setSides(side2, side3, side5, side4);
-        setSides(side1, side4, side6, side3);
-        setSides(side1, side2, side6, side5);
-        setSides(side1, side5, side6, side2);
-        setSides(side1, side3, side6, side4);
-        setSides(side2, side4, side5, side3);
-
-    }
-
-    /**
      * Hilfsfunktion fuer den Konstruktor
      * fuegt die Farben einer Mantelflaeche in dei entsprechende ArrayList ein
      *
@@ -122,15 +107,6 @@ public class Cube {
 
         sidesToRotate.add(list);
 
-    }
-
-    /**
-     * Getter fuer SidesToRotate
-     *
-     * @return sidesToRotate
-     */
-    public ArrayList<ArrayList<Integer>> getSidesToRotate() {
-        return sidesToRotate;
     }
 
     /**
@@ -183,7 +159,8 @@ public class Cube {
     }
 
     /**
-     * vergleicht die aktuellen Seitenflächen zweier Wuerfel und gibt false zurueck, falls mindestens ein paar korrespondierender Seiten gleiche Farbe hat
+     * vergleicht die aktuellen Seitenflächen zweier Wuerfel und gibt false zurueck, falls mindestens ein paar korrespondierender Seiten gleiche Farbe hat.
+     * Fuer die gleiche Wuerfel gibt true zurueckt, weil der Ergebnis des Vergleichens mit sich selbst die Loesung nicht beeinfluessen soll.
      *
      * @param cubeToCompare anderer Wuerfel, mit dem verglichen werden soll
      * @return true falls alle Seiten verschieden

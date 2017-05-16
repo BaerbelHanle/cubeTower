@@ -24,19 +24,6 @@ public class Tower {
         solutions = new ArrayList<>();
     }
 
-    /**
-     * Ueberpruerft ob die Loesung die einzige ist und falls ja, fuegt sie zu den Loesungen der Aufgabe.
-     */
-    private void addSolutionIfUnique() {
-        Solution possibleSolution = new Solution(this);
-        if (solutions.isEmpty()){
-          solutions.add(possibleSolution);
-        } else {
-           if (possibleSolution.isNewSolution(solutions)){
-                solutions.add(possibleSolution);
-           }
-        }
-    }
 
     /**
      * Getter fuer die Wuerfel
@@ -77,19 +64,6 @@ public class Tower {
     }
 
     /**
-     * Ueberprueft, ob alle Wuerfel an den Seiten verschiedene Farben haben.
-     * @return true, falls es eine gueltige Loesung ist
-     */
-    private boolean isValidTower(){
-        for (Cube cube: cubes){
-            if (!cube.sidesDifferent(cubes)){
-                return false;
-            }
-        }
-        return true;
-    }
-
-    /**
      * Ueberprueft, ob die Wuerfel, die schon rotiert werden, fuer die Loesung passen
      * @param indexOfCube nummer des Wuerfels im Turm
      * @return true, falls gueltige Loesung
@@ -120,14 +94,42 @@ public class Tower {
     }
 
     /**
+     * Ueberprueft, ob alle Wuerfel an den Seiten verschiedene Farben haben.
+     * @return true, falls es eine gueltige Loesung ist
+     */
+    private boolean isValidTower(){
+        for (Cube cube: cubes){
+            if (!cube.sidesDifferent(cubes)){
+                return false;
+            }
+        }
+        return true;
+    }
+
+    /**
+     * Ueberpruerft ob die Loesung die einzige ist und falls ja, fuegt sie zu den Loesungen der Aufgabe.
+     */
+    private void addSolutionIfUnique() {
+        Solution possibleSolution = new Solution(this);
+        if (solutions.isEmpty()){
+            solutions.add(possibleSolution);
+        } else {
+            if (possibleSolution.isNewSolution(solutions)){
+                solutions.add(possibleSolution);
+            }
+        }
+    }
+
+    /**
      * Druckt alle Loesungen aus.
      */
     public void printSolutions(){
         if (!solutions.isEmpty()) {
-            int i=1;
+            int solutionCounter=1;
             for (Solution solution : solutions) {
                 System.out.println("=================SOLUTION=================");
-                System.out.println(i++);
+                System.out.println("                    "+ solutionCounter);
+                solutionCounter++;
                 System.out.println(solution.toString());
             }
         }
