@@ -122,7 +122,7 @@ public class Cube {
     /**
      * Gibt den Index der Achse an, um die gerade gedreht wird
      *
-     * @return
+     * @return index der Achse, um die gedreht wird
      */
     public int getAxisIndex() {
         return axisIndex;

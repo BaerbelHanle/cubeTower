@@ -7,11 +7,19 @@ import java.util.ArrayList;
  */
 public class Solution {
 
-
+    /**
+     * Die ArrayList enthaelt die verschiendenen Seitenansichten
+     */
     private ArrayList<int[]> solutionMatrix; // int[] speichert die Ansicht von einer Seite
+    /**
+     * dekodiert die Farben - nuetzlich fuer die toString-Methode
+     */
     public static String[] colours = {"rot", "blau", "gruen", "gelb"};
 
-
+    /**
+     * Der Konstruktor konstruiert solutionMatrix aus einem Wuerfelturm
+     * @param tower - der Wuerfelturm, der als Matrix dargestellt werden soll
+     */
     public Solution(Tower tower) {
 
         solutionMatrix = new ArrayList<>();
@@ -35,12 +43,19 @@ public class Solution {
 
     }
 
-
+    /**
+     * Getter fuer solutionMatrix
+     * @return solutionMatrix
+     */
     public ArrayList<int[]> getSolutionMatrix() {
         return solutionMatrix;
     }
 
-
+    /**
+     * ueberprueft, ob eine Loesung nur die Rotation einer anderen Loesung ist
+     * @param solutionToCompare andereLoesung
+     * @return true, falls die Loesung keine Rotation der anderen ist
+     */
     public boolean isNewSolution(Solution solutionToCompare) {
 
         int rotationCounter = 0;
@@ -57,6 +72,11 @@ public class Solution {
         return true;
     }
 
+    /**
+     * ueberprueft, ob zwei Loesungen in allen Seiten uebereinstimmen
+     * @param solutionToCompare andere Loesung
+     * @return true, falls jede Seite gleich ist
+     */
     private boolean sidesDifferent(Solution solutionToCompare) {
 
         for (int i = 0; i < 4; i++) {
@@ -71,6 +91,11 @@ public class Solution {
     }
 
 
+    /**
+     * Ueberprueft, ob in der uebergebenen ArrayList von Loesungen eine rotationsinvariante dabei ist
+     * @param solutionsToCompare ArrayList von Loesungen, die verglichen werden sollen
+     * @return true, falls keine der uebergebenen Loesungen rotationsinvariant ist
+     */
     public boolean isNewSolution(ArrayList<Solution> solutionsToCompare) {
 
         for (Solution solutionToCompare : solutionsToCompare) {
@@ -82,12 +107,19 @@ public class Solution {
     }
 
 
+    /**
+     * Hilfsfunktion fuer isNewSolution(Solution)
+     * dreht einen Wuerfelturm
+     */
     private void rotate() {
         solutionMatrix.add(solutionMatrix.get(0));
         solutionMatrix.remove(0);
     }
 
-
+    /**
+     * gibt die Farben an den Seiten des Wuerfelturms aus
+     * @return Farben des Wuerfelturms als Matrix
+     */
     public String toString() {
 
         StringBuilder sb = new StringBuilder();
