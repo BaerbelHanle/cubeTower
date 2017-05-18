@@ -3,7 +3,7 @@ package cubeTower;
 import java.util.ArrayList;
 
 /**
- * Created by Bärbel on 07.05.2017.
+ * Snapshot eines Wuerfelturms
  */
 public class Solution {
 

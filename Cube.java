@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import static java.lang.System.exit;
 
 /**
- * Created by Bärbel on 07.05.2017.
+ * Representiert einen Wuerfel in einer konkreten Orientierung
  */
 public class Cube {
 
